@@ -1,0 +1,124 @@
+/* reduce the space between itemizes */
+li {
+  padding: 2px 0;
+}
+
+/* reduce the title of slides */
+header h2, header h3 {
+  font-size: 80%;
+}
+/* reduce the code size */
+pre {
+  font-size: 80%;
+}
+
+
+/*
+
+p.cop {
+    background: none repeat scroll 0 0 #092D1F;
+    bottom: 0;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0.3em 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+*/
+
+
+section > * {
+    overflow: visible; /* evite le tassement pourri */
+}
+
+section {
+    font-size: 24px;
+    overflow: visible; /* evite les barres de défilement */
+}
+
+video {
+    margin: 0 auto;
+    display: block; /*browsers who don't understand HTML5 need this anyway, though I dunno what HTML5 specs say about video elements... if they are blocks like divs or inlines like <object> tags?*/
+}
+
+/* Workaround for listing via include directive */
+
+
+/* See: https://gist.github.com/nicolashery/5765395 */
+/* Synic syntax highlighting */
+/*pre pre:not(.diff-line-pre),pre table{background:#000!important;color:#fdf6e3ff0!important;}*/
+
+.operator { color: #859900; }
+.punctuation { color: #586e75; }
+.name.other { color: #586e75; }
+.keyword { color: #859900; }
+.keyword.reserved { color: #268bd2; }
+.keyword.declaration { color: #268bd2; }
+.comment { color: #93a1a1; }
+.literal.string.single { color: #2aa198; }
+.literal.string.double { color: #2aa198; }
+.name.builtin { color: #b58900; }
+.name.tag { color: #268bd2; }
+/*
+pre { background: #fdf6e3; color: #586e75; }
+.linenos pre { background: #eee8d5;}
+.err { color: #586e75; }
+.g { color: #586e75; }
+.l { color: #586e75; }
+.n { color: #586e75; }
+.x { color: #cb4b16; }
+.cm { color: #93a1a1; }
+.cp { color: #859900; }
+.c1 { color: #93a1a1; }
+.cs { color: #859900; }
+.gd { color: #2aa198; }
+.ge { color: #586e75; font-style: italic; }
+.gr { color: #dc322f; }
+.gh { color: #cb4b16; }
+.gi { color: #859900; }
+.go { color: #586e75; }
+.gp { color: #586e75; }
+.gs { color: #586e75; font-weight: bold; }
+.gu { color: #cb4b16; }
+.gt { color: #586e75; }
+.kc { color: #cb4b16; }
+.kn { color: #859900; }
+.kp { color: #859900; }
+.kt { color: #dc322f; }
+.ld { color: #586e75; }
+.m { color: #2aa198; }
+.s { color: #2aa198; }
+.na { color: #586e75; }
+.nc { color: #268bd2; }
+.nd { color: #268bd2; }
+.ni { color: #cb4b16; }
+.ne { color: #cb4b16; }
+.nf { color: #268bd2; }
+.nl { color: #586e75; }
+.nn { color: #586e75; }
+.py { color: #586e75; }
+.nv { color: #268bd2; }
+.ow { color: #859900; }
+.w { color: #586e75; }
+.mf { color: #2aa198; }
+.mh { color: #2aa198; }
+.mi { color: #2aa198; }
+.mo { color: #2aa198; }
+.sb { color: #93a1a1; }
+.sc { color: #2aa198; }
+.sd { color: #586e75; }
+.s2 { color: #2aa198; }
+.se { color: #cb4b16; }
+.sh { color: #586e75; }
+.si { color: #2aa198; }
+.sx { color: #2aa198; }
+.sr { color: #dc322f; }
+.ss { color: #2aa198; }
+.bp { color: #268bd2; }
+.vc { color: #268bd2; }
+.vg { color: #268bd2; }
+.vi { color: #268bd2; }
+.il { color: #2aa198; }
+*/
+

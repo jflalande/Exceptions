@@ -1,0 +1,67 @@
+
+
+intro historique
+
+uml+code ?
+
+les diagrammes ?
+classes
+seq etc
+
+***********
+
+En java
+En python
+
+
+
+
+et la fonction ?
+
+L'encapsulation
+objet
+
+
+classe
+méthode
+attribut
+
+instance
+
+méthode d'instance
+
+class abstraite
+interface
+
+Le constructeur
+
+typage 
+
+Composition
+
+
+le sous-typage
+- héritage
+- héritage multiple
+
+le polymorphisme
+
+covariance et contravariance
+
+
+Modélisation
+************
+
+
+La JVM
+******
+
+Annexe
+******
+
+L'introspection
+Généricité
+Code refactoring
+
+
+
