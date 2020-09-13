@@ -1486,6 +1486,10 @@ Références
 - `Java Language Reference By Mark Grand; 1-56592-326-X, 2nd Edition July 1997 <https://docstore.mik.ua/orelly/java/langref/index.htm>`__
 - `Exception Handling in Java: A Complete Guide with Best and Worst Practices <https://stackabuse.com/exception-handling-in-java-a-complete-guide-with-best-and-worst-practices/>`__
 
+Codes source:
+
+https://github.com/jflalande/Exceptions
+
 ----
 
 Divers
