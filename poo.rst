@@ -177,8 +177,8 @@ C'est un peu le bordel_:
 
 ----
 
-Soit même: this et self
------------------------
+Soi-même: this et self
+----------------------
 
 Puisque on souhaite mettre en oeuvre l'encapsulation, c'est-à-dire distinguer ce qui est dans l'objet et extérieur à l'objet, les langages définissent un mot du langage désignant l'objet contenant le code qui s'exécute:
 
@@ -397,7 +397,7 @@ La destruction du moteur est automatique: elle est assurée par le *garbage coll
 L'agrégation
 ~~~~~~~~~~~~
 
-Une relaxation de la composition est l'agrégation: les entités sont liées mais ne s'appartiennent pas: on peut être agrégé à plusieurs classes différentes. Il n'y a pas de destruction automatique à implémenter quand lie les objets par agrégation.
+Une relaxation de la composition est l'agrégation: les entités sont liées mais ne s'appartiennent pas: on peut être agrégé à plusieurs classes différentes. Il n'y a pas de destruction automatique à implémenter quand on lie les objets par agrégation.
 
 .. image:: images/agrega.png
    :width: 60%
@@ -1262,9 +1262,6 @@ Jrebel a édité une page A4 qui peut servir de `mémo sur les modules <https://
 
 ----
 
-
-
-
 Références
 ~~~~~~~~~~
 
@@ -1286,6 +1283,208 @@ Codes source:
 
 
 - https://github.com/jflalande/MyModule
+
+----
+
+Spécicités du langage Java
+==========================
+
+
+
+.. contents::
+   :local:
+   :depth: 1
+
+----
+
+Les exceptions
+--------------
+
+Une exception est produite lorsqu'une violation est détectée par la JVM, par exemple:
+
+.. include:: codes/Exceptions/src/Main.java
+   :code: java
+
+produit en sortie, l'exception:
+
+.. code-block:: bash
+
+  Tab[i]=0
+  Tab[i]=0
+  Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 10 out of bounds for length 10
+	at Main.main(Main.java:7)
+
+Bien sûr cette exception aurait pû être évitée. Mais certaines exceptions sont légitimes et peuvent survenir. Dans ce cas, on peut décider de les capturer.
+
+----
+
+try catch
+~~~~~~~~~
+
+Les mots clefs **try** **catch** permettent de protéger tout un bloc de code avec **try** et de renvoyer le flot d'exécution dans le bloc **catch** dont le type correspondant de l'exécution levée.
+
+.. include:: codes/Exceptions/src/TryCatch.java
+   :code: java
+   
+produit en sortie, l'exception:
+
+.. code-block:: bash
+
+    Tab[i]=0
+    Tab[i]=0
+    There is an error ! java.lang.ArrayIndexOutOfBoundsException: Index 10 out of bounds for length 10
+    
+    Process finished with exit code 251
+
+Le traitement de l'exception dépend du code métier. Dans cet exemple, on ne peut plus rien faire: il faut arrêter le programme.
+
+----
+
+try et multiples catch
+~~~~~~~~~~~~~~~~~~~~~~
+
+On peut capturer plusieurs exceptions pour un même bloc. L'ordre des exceptions doit respecter la hiérarchie de la classe d'exception: **ClassCastException** hérite d'**Exception** et doit donc être filtrée en premier.
+
+.. include:: codes/Exceptions/src/TryMCatch.java
+   :code: java
+
+----
+
+finally
+~~~~~~~
+
+Enfin, le bloc **finally** permet de placer du code à réaliser dans tous les cas (exception levée ou pas).
+
+.. code-block:: java
+
+    try {
+     
+        // code à protéger qui peut lever une exception
+    }
+    catch(Exception e) {
+     
+        // Traitement d'une exception
+    }
+    finally {
+     
+        // finally block: toujours executé
+        // code de nettoyage ou autre comportement à faire dans tous les cas
+    }
+
+----
+
+finally pour la fermeture des fichiers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On utilise par exemple **finally** pour fermer un fichier, qu'on ait réussi à le lire ou pas. S'il y a une exception on a la garantie de passer par le bloc **finally**.
+
+.. code-block:: java
+
+    BufferedReader br = new BufferedReader(new FileReader(path));   
+        try {
+            return br.readLine();
+        } finally {
+            if(br != null) br.close();
+        }
+
+Cependant, ce n'est pas très élégant, notamment car on doit tester si br est null ou pas.
+
+----
+
+Le statement try-with-resources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Afin d'éviter le bloc **finally** précédent, Java 7 introduit la notion de *try avec ressources* qui va automatiser l'appel à **.close()** des objets créés, s'ils implémentent l'interface **java.lang.AutoCloseable**.
+
+.. include:: codes/Exceptions/src/TryWithResources.java
+   :code: java
+
+----
+
+checked / unchecked
+~~~~~~~~~~~~~~~~~~~
+
+L'exception **ArrayIndexOutOfBoundsException** vue précédemment était en fait une **RuntimeException**. Dans la hiérarchie des exceptions, elle est marquée **unchecked** ce qui signifie qu'il n'est pas obligatoire de la protéger par un bloc **try catch**. La hiérarchie des exceptions et les marqueurs **checked** / **unchecked** est en fait la suivante:
+
+.. code-block:: bash
+
+                                        ---> Throwable <--- 
+                                        |    (checked)     |
+                                        |                  |
+                                        |                  |
+                                ---> Exception           Error
+                                |    (checked)        (unchecked)
+                                |
+                          RuntimeException
+                            (unchecked)
+
+- **checked**: ces exceptions peuvent arriver et le développeur doit explicitement traiter l'exception.
+- **unchecked**: 
+
+  - exceptions: ces sont en général des vérifications qui sont faites à l'exécution et que l'on a pas pu vérifier à la compilation, e.g. **ClassCastException**
+  - errors: ce sont des exceptions assez grave pour, en général, ne pas pouvoir faire de traitements pour récupérer l'erreur, e.g. **StackOverflowError** ou **OutOfMemoryError**.
+
+----
+
+Hiérarchie des exceptions
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. image:: images/jlrf0901.gif
+   :width: 90%
+
+extrait de Java Language Reference, Mark Grand.
+
+----
+
+
+Hiérarchie des erreurs
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+.. image:: images/jlrf0902.gif
+   :width: 80%
+
+extrait de Java Language Reference, Mark Grand.
+
+----
+
+Throw
+~~~~~
+
+Le mot clef **throw** permet de lever une exception. La méthode concernée, doit, dans sa déclaration signaler qu'une exception peut être remontée (si elle est **checked**).
+
+.. include:: codes/Exceptions/src/Throw.java
+   :code: java
+
+.. code-block:: bash
+
+  Throw$MyException: C'est grave: i ne doit pas valoir 1 !
+	at Throw.f(Throw.java:12)
+	at Throw.main(Throw.java:5)
+
+----
+
+Chaine d'exceptions
+~~~~~~~~~~~~~~~~~~~
+
+.. include:: codes/Exceptions/src/ThrowChain.java
+   :code: java
+
+.. code-block:: bash
+
+  Exception in thread "main" ThrowChain$MyFatalException
+	at ThrowChain.main(ThrowChain.java:7)
+
+----
+
+
+Références
+----------
+
+- `Java Language Reference By Mark Grand; 1-56592-326-X, 2nd Edition July 1997 <https://docstore.mik.ua/orelly/java/langref/index.htm>`__
+- `Exception Handling in Java: A Complete Guide with Best and Worst Practices <https://stackabuse.com/exception-handling-in-java-a-complete-guide-with-best-and-worst-practices/>`__
 
 ----
 
