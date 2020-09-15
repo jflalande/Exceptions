@@ -388,10 +388,12 @@
 <p>En UML, on représente la classe ainsi:</p>
 <img alt="images/classe.png" src="images/classe.png" style="width: 20%;" />
 <p>Un objet est <strong>une instance</strong> de classe.</p>
-<p>Conséquement:
-- une classe contient des noms d'attributs mais pas de valeurs d'attributs
-- une classe contient le code des méthodes
-- l'objet peut se passer du code des méthodes</p></section>
+<p>Conséquement:</p>
+<ul class="simple">
+<li>une classe contient des noms d'attributs mais pas de valeurs d'attributs</li>
+<li>une classe contient le code des méthodes</li>
+<li>l'objet peut se passer du code des méthodes</li>
+</ul></section>
             
           </div>
           <div class="presenter_notes">
@@ -3027,7 +3029,7 @@ Hello World !
 
             <span class="keyword type">int</span> <span class="name">tab</span><span class="operator">[]</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="keyword type">int</span><span class="operator">[</span><span class="literal number integer">10</span><span class="operator">];</span>
             <span class="keyword">for</span> <span class="operator">(</span><span class="keyword type">int</span> <span class="name">i</span> <span class="operator">=</span> <span class="literal number integer">0</span><span class="operator">;</span> <span class="name">i</span> <span class="operator">&lt;=</span> <span class="literal number integer">10</span><span class="operator">;</span> <span class="name">i</span><span class="operator">++)</span>
-                <span class="name">System</span><span class="operator">.</span><span class="name attribute">out</span><span class="operator">.</span><span class="name attribute">println</span><span class="operator">(</span><span class="literal string">&quot;Tab[i]=&quot;</span> <span class="operator">+</span> <span class="name">tab</span><span class="operator">[</span><span class="name">i</span><span class="operator">++]);</span>
+                <span class="name">System</span><span class="operator">.</span><span class="name attribute">out</span><span class="operator">.</span><span class="name attribute">println</span><span class="operator">(</span><span class="literal string">&quot;Tab[i]=&quot;</span> <span class="operator">+</span> <span class="name">tab</span><span class="operator">[</span><span class="name">i</span><span class="operator">]);</span>
     <span class="operator">}</span>
 <span class="operator">}</span>
 </pre>
@@ -3075,7 +3077,7 @@ Exception in thread <span class="s2">&quot;main&quot;</span> java.lang.ArrayInde
         <span class="keyword type">int</span> <span class="name">tab</span><span class="operator">[]</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="keyword type">int</span><span class="operator">[</span><span class="literal number integer">10</span><span class="operator">];</span>
         <span class="keyword">try</span> <span class="operator">{</span>
             <span class="keyword">for</span> <span class="operator">(</span><span class="keyword type">int</span> <span class="name">i</span> <span class="operator">=</span> <span class="literal number integer">0</span><span class="operator">;</span> <span class="name">i</span> <span class="operator">&lt;=</span> <span class="literal number integer">10</span><span class="operator">;</span> <span class="name">i</span><span class="operator">++)</span>
-                <span class="name">System</span><span class="operator">.</span><span class="name attribute">out</span><span class="operator">.</span><span class="name attribute">println</span><span class="operator">(</span><span class="literal string">&quot;Tab[i]=&quot;</span> <span class="operator">+</span> <span class="name">tab</span><span class="operator">[</span><span class="name">i</span><span class="operator">++]);</span>
+                <span class="name">System</span><span class="operator">.</span><span class="name attribute">out</span><span class="operator">.</span><span class="name attribute">println</span><span class="operator">(</span><span class="literal string">&quot;Tab[i]=&quot;</span> <span class="operator">+</span> <span class="name">tab</span><span class="operator">[</span><span class="name">i</span><span class="operator">]);</span>
         <span class="operator">}</span>
         <span class="keyword">catch</span> <span class="operator">(</span><span class="name">ArrayIndexOutOfBoundsException</span> <span class="name">e</span><span class="operator">)</span>
         <span class="operator">{</span>
@@ -3130,7 +3132,7 @@ Process finished with <span class="nb">exit</span> code <span class="m">251</spa
         <span class="keyword type">int</span> <span class="name">tab</span><span class="operator">[]</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="keyword type">int</span><span class="operator">[</span><span class="literal number integer">10</span><span class="operator">];</span>
         <span class="keyword">try</span> <span class="operator">{</span>
             <span class="keyword">for</span> <span class="operator">(</span><span class="keyword type">int</span> <span class="name">i</span> <span class="operator">=</span> <span class="literal number integer">0</span><span class="operator">;</span> <span class="name">i</span> <span class="operator">&lt;=</span> <span class="literal number integer">10</span><span class="operator">;</span> <span class="name">i</span><span class="operator">++)</span>
-                <span class="name">System</span><span class="operator">.</span><span class="name attribute">out</span><span class="operator">.</span><span class="name attribute">println</span><span class="operator">(</span><span class="literal string">&quot;Tab[i]=&quot;</span> <span class="operator">+</span> <span class="name">tab</span><span class="operator">[</span><span class="name">i</span><span class="operator">++]);</span>
+                <span class="name">System</span><span class="operator">.</span><span class="name attribute">out</span><span class="operator">.</span><span class="name attribute">println</span><span class="operator">(</span><span class="literal string">&quot;Tab[i]=&quot;</span> <span class="operator">+</span> <span class="name">tab</span><span class="operator">[</span><span class="name">i</span><span class="operator">]);</span>
         <span class="operator">}</span>
         <span class="keyword">catch</span> <span class="operator">(</span><span class="name">ClassCastException</span> <span class="name">e</span><span class="operator">)</span> <span class="operator">{</span>  <span class="operator">}</span> <span class="comment single">// Erreur de cast !
 </span>        <span class="keyword">catch</span> <span class="operator">(</span><span class="name">ArrayIndexOutOfBoundsException</span> <span class="name">e</span><span class="operator">)</span> <span class="operator">{</span> <span class="comment single">// Dépassement de bornes
@@ -3539,7 +3541,9 @@ RuntimeException
             <section><ul class="simple">
 <li><a class="reference external" href="https://docstore.mik.ua/orelly/java/langref/index.htm">Java Language Reference By Mark Grand; 1-56592-326-X, 2nd Edition July 1997</a></li>
 <li><a class="reference external" href="https://stackabuse.com/exception-handling-in-java-a-complete-guide-with-best-and-worst-practices/">Exception Handling in Java: A Complete Guide with Best and Worst Practices</a></li>
-</ul></section>
+</ul>
+<p>Codes source:</p>
+<p><a class="reference external" href="https://github.com/jflalande/Exceptions">https://github.com/jflalande/Exceptions</a></p></section>
             
           </div>
           <div class="presenter_notes">

@@ -135,6 +135,7 @@ En UML, on représente la classe ainsi:
 Un objet est **une instance** de classe.
 
 Conséquement:
+
 - une classe contient des noms d'attributs mais pas de valeurs d'attributs
 - une classe contient le code des méthodes
 - l'objet peut se passer du code des méthodes
